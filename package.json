@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js --username=Vlad"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladTarnovskiy/NodeJS-file-manager.git"
+  },
+  "author": "Vlad Tarnovskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladTarnovskiy/NodeJS-file-manager/issues"
+  },
+  "homepage": "https://github.com/VladTarnovskiy/NodeJS-file-manager#readme"
+}
