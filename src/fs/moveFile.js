@@ -18,7 +18,6 @@ export const moveFile = async (currentPath, pathData) => {
 
     const fileExtension = extname(fullPath);
     const fileName = basename(fullPath, fileExtension);
-    console.log(fileName);
     if (isAbsolute(pathToChooseDir)) {
       fullDirPath = join(pathToChooseDir, `${fileName}{${fileExtension}`);
     } else {
@@ -28,7 +27,6 @@ export const moveFile = async (currentPath, pathData) => {
         `${fileName}${fileExtension}`
       );
     }
-    console.log(fileExtension);
     await rename(fullPath, fullDirPath);
     console.log("\x1b[36m%s\x1b[0m", `File has been moved!`);
     showCurrentPath(currentPath);

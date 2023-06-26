@@ -1,8 +1,8 @@
 import { currentPathStorage } from "./currentPathStorage.js";
 import { showCurrentPath } from "./showCurrentPath.js";
-import { join, sep } from "node:path";
+import { join } from "node:path";
 
-export const upToDirectory = (path) => {
-  currentPathStorage.setCurrentPath = join(path, "..", sep);
-  showCurrentPath(currentPathStorage.currentPath);
+export const upToDirectory = async (path) => {
+  currentPathStorage.setCurrentPath = join(path, "..");
+  showCurrentPath(currentPathStorage.getCurrentPath);
 };

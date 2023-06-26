@@ -29,7 +29,7 @@ stdin.on("data", async (chunk) => {
     if (data.trim() === ".exit") {
       exit(0);
     } else if (data.trim() === "up") {
-      upToDirectory(currentPath);
+      await upToDirectory(currentPath);
     } else if (data.startsWith("cd")) {
       await goToDirectory(currentPath, getCommandsData(data));
     } else if (data.trim() === "ls") {
@@ -49,15 +49,17 @@ stdin.on("data", async (chunk) => {
     } else if (data.startsWith("os")) {
       await getSystemInfo(currentPath, getCommandsData(data));
     } else if (data.startsWith("hash")) {
-      //вввввва
       await calculateOfHash(currentPath, getCommandsData(data));
     } else if (data.startsWith("compress")) {
       await compressFile(currentPath, data.slice(9));
     } else if (data.startsWith("decompress")) {
       await decompressFile(currentPath, data.slice(11));
+    } else {
+      throw new Error("Command not found!");
     }
   } catch (error) {
     console.log(error);
+    showCurrentPath(currentPath);
   }
 });
 

@@ -17,7 +17,6 @@ export const copyFile = async (currentPath, pathData) => {
 
     const fileExtension = extname(fullPath);
     const fileName = basename(fullPath, fileExtension);
-    console.log(fileName);
     if (isAbsolute(pathToChooseDir)) {
       fullDirPath = join(pathToChooseDir, `${fileName}_copy{${fileExtension}`);
     } else {
@@ -27,7 +26,6 @@ export const copyFile = async (currentPath, pathData) => {
         `${fileName}_copy${fileExtension}`
       );
     }
-    console.log(fileExtension);
     const readStream = createReadStream(fullPath);
     const writeStream = createWriteStream(fullDirPath);
     readStream.pipe(writeStream);

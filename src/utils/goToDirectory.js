@@ -1,4 +1,4 @@
-import { join, sep, isAbsolute } from "node:path";
+import { join, isAbsolute } from "node:path";
 import { showCurrentPath } from "./showCurrentPath.js";
 import { currentPathStorage } from "./currentPathStorage.js";
 import { checkDirectoryExist } from "./checkDirectoryExist.js";
@@ -7,15 +7,11 @@ export const goToDirectory = async (currentPath, pathToDirectory) => {
   try {
     if (isAbsolute(pathToDirectory)) {
       if (await checkDirectoryExist(pathToDirectory)) {
-        currentPathStorage.setCurrentPath = join(pathToDirectory, sep);
+        currentPathStorage.setCurrentPath = join(pathToDirectory);
       }
     } else {
       if (await checkDirectoryExist(join(currentPath, pathToDirectory))) {
-        currentPathStorage.setCurrentPath = join(
-          currentPath,
-          pathToDirectory,
-          sep
-        );
+        currentPathStorage.setCurrentPath = join(currentPath, pathToDirectory);
       }
     }
     showCurrentPath(currentPathStorage.getCurrentPath);
