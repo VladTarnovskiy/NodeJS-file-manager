@@ -4,12 +4,15 @@ import { showCurrentPath } from "./utils/showCurrentPath.js";
 import { upToDirectory } from "./utils/upToDirectory.js";
 import { goToDirectory } from "./utils/goToDirectory.js";
 import { fileList } from "./utils/filesList.js";
-import { getDataCommands } from "./utils/getDataCommand.js";
+import { getCommandsData } from "./utils/getDataCommand.js";
 import { readFile } from "./fs/readFile.js";
 import { createFile } from "./fs/createFile.js";
 import { renameFile } from "./fs/renameFile.js";
 import { copyFile } from "./fs/copyFile.js";
 import { moveFile } from "./fs/moveFile.js";
+import { deleteFile } from "./fs/deleteFile.js";
+import { getSystemInfo } from "./os/operationSystem.js";
+import { calculateOfHash } from "./hash/calculateHash.js";
 
 let arg = argv[2];
 let username = arg.split("=")[1];
@@ -26,23 +29,26 @@ stdin.on("data", async (chunk) => {
     } else if (data.trim() === "up") {
       upToDirectory(currentPath);
     } else if (data.startsWith("cd")) {
-      await goToDirectory(currentPath, getDataCommands(data));
+      await goToDirectory(currentPath, getCommandsData(data));
     } else if (data.trim() === "ls") {
       await fileList(currentPath);
     } else if (data.startsWith("cat")) {
-      await readFile(currentPath, getDataCommands(data));
+      await readFile(currentPath, getCommandsData(data));
     } else if (data.startsWith("add")) {
-      await createFile(getDataCommands(data));
+      await createFile(getCommandsData(data));
     } else if (data.startsWith("rn")) {
       await renameFile(currentPath, data.slice(3));
     } else if (data.startsWith("cp")) {
       await copyFile(currentPath, data.slice(3));
     } else if (data.startsWith("mv")) {
       await moveFile(currentPath, data.slice(3));
+    } else if (data.startsWith("rm")) {
+      await deleteFile(currentPath, getCommandsData(data));
+    } else if (data.startsWith("os")) {
+      await getSystemInfo(currentPath, getCommandsData(data));
+    } else if (data.startsWith("hash")) {
+      await calculateOfHash(currentPath, getCommandsData(data));
     }
-    // else if (data.startsWith("rm")) {
-    //   await fileList(currentPath);
-    // }
   } catch (error) {
     console.log(error);
   }
