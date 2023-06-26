@@ -13,6 +13,8 @@ import { moveFile } from "./fs/moveFile.js";
 import { deleteFile } from "./fs/deleteFile.js";
 import { getSystemInfo } from "./os/operationSystem.js";
 import { calculateOfHash } from "./hash/calculateHash.js";
+import { compressFile } from "./zlib/compress.js";
+import { decompressFile } from "./zlib/decompress.js";
 
 let arg = argv[2];
 let username = arg.split("=")[1];
@@ -47,7 +49,12 @@ stdin.on("data", async (chunk) => {
     } else if (data.startsWith("os")) {
       await getSystemInfo(currentPath, getCommandsData(data));
     } else if (data.startsWith("hash")) {
+      //вввввва
       await calculateOfHash(currentPath, getCommandsData(data));
+    } else if (data.startsWith("compress")) {
+      await compressFile(currentPath, data.slice(9));
+    } else if (data.startsWith("decompress")) {
+      await decompressFile(currentPath, data.slice(11));
     }
   } catch (error) {
     console.log(error);

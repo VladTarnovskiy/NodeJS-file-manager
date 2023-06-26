@@ -6,6 +6,7 @@ export const currentPathStorage = {
   get getCurrentPath() {
     return this.currentPath;
   },
+
   set setCurrentPath(path) {
     return (this.currentPath = path);
   },
