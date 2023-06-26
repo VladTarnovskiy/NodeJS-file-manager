@@ -10,7 +10,7 @@ export const createFile = async (fileName) => {
     console.log("\x1b[36m%s\x1b[0m", `File ${fileName} has been created!`);
     showCurrentPath(currentPath);
   } catch (error) {
-    console.error("\x1b[31m%s\x1b[0m", error.message);
+    console.error("\x1b[31m%s\x1b[0m", error);
     showCurrentPath(currentPath);
   }
 };

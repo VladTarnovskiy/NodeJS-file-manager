@@ -17,8 +17,11 @@ export const readFile = async (currentPath, fileName) => {
     inputData.on("end", () => {
       showCurrentPath(currentPath);
     });
+    inputData.on("error", (error) => {
+      console.error("\x1b[31m%s\x1b[0m", error);
+    });
   } catch (error) {
-    console.error("\x1b[31m%s\x1b[0m", error.message);
+    console.error("\x1b[31m%s\x1b[0m", error);
     showCurrentPath(currentPath);
   }
 };

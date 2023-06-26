@@ -28,6 +28,10 @@ export const calculateOfHash = async (currentPath, pathData) => {
       console.log("\x1b[36m%s\x1b[0m", `File has been hashed!`);
       showCurrentPath(currentPath);
     });
+
+    content.on("error", (error) => {
+      console.error("\x1b[31m%s\x1b[0m", error);
+    });
   } catch (error) {
     console.error("\x1b[31m%s\x1b[0m", error);
     showCurrentPath(currentPath);

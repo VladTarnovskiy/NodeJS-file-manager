@@ -28,6 +28,12 @@ export const copyFile = async (currentPath, pathData) => {
     }
     const readStream = createReadStream(fullPath);
     const writeStream = createWriteStream(fullDirPath);
+    readStream.on("error", (error) => {
+      console.error("\x1b[31m%s\x1b[0m", error);
+    });
+    writeStream.on("error", (error) => {
+      console.error("\x1b[31m%s\x1b[0m", error);
+    });
     readStream.pipe(writeStream);
     console.log("\x1b[36m%s\x1b[0m", `File has been copied!`);
     showCurrentPath(currentPath);
