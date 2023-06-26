@@ -58,7 +58,7 @@ stdin.on("data", async (chunk) => {
       throw new Error("Command not found!");
     }
   } catch (error) {
-    console.log(error);
+    console.error("\x1b[31m%s\x1b[0m", error);
     showCurrentPath(currentPath);
   }
 });
