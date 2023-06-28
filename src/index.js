@@ -5,16 +5,17 @@ import { upToDirectory } from "./utils/upToDirectory.js";
 import { goToDirectory } from "./utils/goToDirectory.js";
 import { fileList } from "./utils/filesList.js";
 import { getCommandsData } from "./utils/getDataCommand.js";
-import { readFile } from "./fs/readFile.js";
-import { createFile } from "./fs/createFile.js";
-import { renameFile } from "./fs/renameFile.js";
-import { copyFile } from "./fs/copyFile.js";
-import { moveFile } from "./fs/moveFile.js";
-import { deleteFile } from "./fs/deleteFile.js";
+import {
+  readFile,
+  createFile,
+  renameFile,
+  copyFile,
+  moveFile,
+  deleteFile,
+} from "./fs/index.js";
 import { getSystemInfo } from "./os/operationSystem.js";
 import { calculateOfHash } from "./hash/calculateHash.js";
-import { compressFile } from "./zlib/compress.js";
-import { decompressFile } from "./zlib/decompress.js";
+import { compressFile, decompressFile } from "./zlib/index.js";
 
 let arg = argv[2];
 let username = "Undefined";
