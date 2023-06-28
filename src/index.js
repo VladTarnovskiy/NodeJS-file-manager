@@ -16,13 +16,9 @@ import {
 import { getSystemInfo } from "./os/operationSystem.js";
 import { calculateOfHash } from "./hash/calculateHash.js";
 import { compressFile, decompressFile } from "./zlib/index.js";
+import { getUserName } from "./utils/getUserName.js";
 
-let arg = argv[2];
-let username = "Undefined";
-
-if (arg !== undefined) {
-  username = arg.split("=")[1] || undefined;
-}
+const username = getUserName();
 
 console.log(`Welcome to the File Manager, ${username}!`);
 showCurrentPath(currentPathStorage.getCurrentPath);
