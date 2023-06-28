@@ -17,7 +17,12 @@ import { compressFile } from "./zlib/compress.js";
 import { decompressFile } from "./zlib/decompress.js";
 
 let arg = argv[2];
-let username = arg.split("=")[1];
+let username = "Undefined";
+console.log(argv);
+
+if (arg !== undefined) {
+  username = arg.split("=")[1] || undefined;
+}
 
 console.log(`Welcome to the File Manager, ${username}!`);
 showCurrentPath(currentPathStorage.getCurrentPath);
