@@ -18,7 +18,6 @@ import { decompressFile } from "./zlib/decompress.js";
 
 let arg = argv[2];
 let username = "Undefined";
-console.log(argv);
 
 if (arg !== undefined) {
   username = arg.split("=")[1] || undefined;
